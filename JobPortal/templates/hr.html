@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+{% load static%}
+
+{% block content %}
+<div class="container card">
+    <h1>Candidates applied</h1>
+    <div class="card-body">
+        <table class="table table-hover">
+            <tr>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Resume</th>
+                <th>Gender</th>
+                <th>Mobile</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td>Kartik Aryan</td>
+                <td>19 apr,1995</td>
+                <td>Sampleresume_h9UAPNV.pdf</td>
+                <td>Male</td>
+                <td>9876543210</td>
+                <td>aryan.kartik@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Chapdu das</td>
+                <td>21 june,2000</td>
+                <td>Sampleresume_qnY6oqf.pdf</td>
+                <td>Female</td>
+                <td>3767476277</td>
+                <td>ss@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Sharmistha Sahoo</td>
+                <td>15 apr,2005</td>
+                <td>Sampleresume.pdf</td>
+                <td>Female</td>
+                <td>9537458446</td>
+                <td>sharmisthasahooooo@gmail.com</td>
+            </tr>
+        
+            {% for c in candidates %}
+                <tr>
+                    <td>{{c.name}}</td>
+                    <td>{{c.dob}}</td>
+                    {% if c.resume %}
+                    <td><a href='{{c.resume.url}}' download >{{c.resume}}</td></a></td>
+                    {% else %}
+                    <td>Not submitted</td>
+                    {% endif %}
+                    <td>{{c.gender}}</td>
+                    <td>{{c.mobile}}</td>
+                    <td>{{c.email}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}
